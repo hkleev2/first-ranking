@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 public class Product {
-
+    // DB와 매핑된 객체
     @Id
     private Long id;
 

@@ -15,6 +15,7 @@ public class ProductDto {
     private String brand;
     private String company;
 
+    // 도메인의 Product를 서비스에서 받기위한 객체
     public static ProductDto of(Product product) {
         return ProductDto.builder()
                 .id(product.getId())

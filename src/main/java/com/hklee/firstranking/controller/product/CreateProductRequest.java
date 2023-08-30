@@ -7,6 +7,7 @@ public class CreateProductRequest {
     private String brand;
     private String company;
 
+    // 사용자의 데이터 받을때
     public CreateProductDto toServiceDto() {
         return CreateProductDto.builder()
                 .name(name)

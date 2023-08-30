@@ -13,6 +13,7 @@ public class CreateProductDto {
     private String brand;
     private String company;
 
+    //사용자의 요청 데이터를 서비스로 받는 객체
     public Product toProduct() {
         return Product.builder()
                 .name(name)
