@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
     List<Comment> findAllByProductId(Long productId);
+
+    List<Comment> findAllByProductIdAndIsDeletedIsFalse(Long productId);
 }

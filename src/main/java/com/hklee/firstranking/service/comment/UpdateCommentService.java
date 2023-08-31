@@ -5,14 +5,12 @@ import com.hklee.firstranking.domain.comment.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-
 @RequiredArgsConstructor
 @Service
 public class UpdateCommentService {
 
     private final CommentRepository commentRepository;
-    private final Long loginId = 2L;
+    private final Long loginId = 2L; // todo :: member 개발 후 수정
 
     public CommentDto update(Long id, UpdateCommentDto dto) throws Exception {
         Comment comment = commentRepository.findById(id).orElseThrow();

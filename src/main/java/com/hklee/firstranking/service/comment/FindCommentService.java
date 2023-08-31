@@ -14,6 +14,6 @@ public class FindCommentService {
     private final CommentRepository commentRepository;
 
     public List<Comment> findList(Long productId) {
-        return commentRepository.findAllByProductId(productId);
+        return commentRepository.findAllByProductIdAndIsDeletedIsFalse(productId);
     }
 }

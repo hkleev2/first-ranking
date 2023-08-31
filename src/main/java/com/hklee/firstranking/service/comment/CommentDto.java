@@ -6,9 +6,6 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Map;
-import java.util.Objects;
 
 @Getter
 @AllArgsConstructor
