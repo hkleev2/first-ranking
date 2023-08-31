@@ -8,13 +8,11 @@ import java.util.Date;
 
 @Data
 public class UpdateCommentRequest {
-    private Long id;
-    private String comment;
+    private String text;
 
     public UpdateCommentDto toServiceDto() {
         return UpdateCommentDto.builder()
-                .id(id)
-                .comment(comment)
+                .text(text)
                 .build();
     }
 }

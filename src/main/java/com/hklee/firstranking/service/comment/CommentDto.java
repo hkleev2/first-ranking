@@ -7,6 +7,8 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Map;
+import java.util.Objects;
 
 @Getter
 @AllArgsConstructor
@@ -14,15 +16,16 @@ import java.util.Date;
 public class CommentDto {
 
     private Long id;
-    private String name;
-    private String comment;
+    private Long userId;
+    private String text;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 
     public static CommentDto of(Comment comment) {
         return CommentDto.builder()
                 .id(comment.getId())
-                .name(comment.getName())
+                .userId(comment.getUserId())
+                .text(comment.getText())
                 .createDate(comment.getCreateDate())
                 .updateDate(comment.getUpdateDate())
                 .build();

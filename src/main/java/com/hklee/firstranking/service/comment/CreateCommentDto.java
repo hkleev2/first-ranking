@@ -10,15 +10,15 @@ import lombok.Getter;
 @Builder
 public class CreateCommentDto {
     private Long productId;
-    private String name;
-    private String comment;
-    private String parentId;
+    private Long userId;
+    private String text;
+    private Long parentId;
 
     public Comment toComment() {
         return Comment.builder()
                 .productId(productId)
-                .name(name)
-                .comment(comment)
+                .userId(userId)
+                .text(text)
                 .parentId(parentId)
                 .build();
     }

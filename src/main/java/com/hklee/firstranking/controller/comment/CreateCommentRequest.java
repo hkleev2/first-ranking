@@ -6,15 +6,15 @@ import lombok.Data;
 @Data
 public class CreateCommentRequest {
     private Long productId;
-    private String name;
-    private String comment;
-    private String parentId;
+    private Long userId;
+    private String text;
+    private Long parentId;
 
     public CreateCommentDto toServiceDto() {
         return CreateCommentDto.builder()
                 .productId(productId)
-                .name(name)
-                .comment(comment)
+                .userId(userId)
+                .text(text)
                 .parentId(parentId)
                 .build();
     }

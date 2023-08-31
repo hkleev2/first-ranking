@@ -11,9 +11,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
 @Entity
 public class Comment {
@@ -26,17 +25,29 @@ public class Comment {
     private Long productId;
 
     @Column
-    private String name;
+    private Long userId;
 
     @Column
-    private String comment;
+    private String text;
 
     @Column
-    private String parentId;
+    private Long parentId;
 
-    @LastModifiedDate
-    private LocalDateTime updateDate;
+    @UpdateTimestamp
+    @Column
+    private LocalDateTime updateDate = LocalDateTime.now();
 
-    @CreatedDate
-    private LocalDateTime createDate;
+    @CreationTimestamp
+    @Column
+    private LocalDateTime createDate = LocalDateTime.now();
+
+    @Column
+    private boolean isDeleted;
+
+    public void setText(String text) {
+        this.text = text;
+    }
+    public void setIsDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
 }

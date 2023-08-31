@@ -12,5 +12,6 @@ import java.util.Date;
 @Builder
 public class UpdateCommentDto {
     private Long id;
-    private String comment;
+    private Long userId;
+    private String text;
 }
