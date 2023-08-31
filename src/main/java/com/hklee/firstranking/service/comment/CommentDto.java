@@ -20,6 +20,7 @@ public class CommentDto {
     private String text;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
+    private boolean isDeleted;
 
     public static CommentDto of(Comment comment) {
         return CommentDto.builder()
@@ -28,6 +29,7 @@ public class CommentDto {
                 .text(comment.getText())
                 .createDate(comment.getCreateDate())
                 .updateDate(comment.getUpdateDate())
+                .isDeleted(comment.isDeleted())
                 .build();
     }
 }

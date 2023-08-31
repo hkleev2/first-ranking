@@ -2,6 +2,7 @@ package com.hklee.firstranking.domain.comment;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -21,13 +22,13 @@ public class Comment {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private Long productId;
 
-    @Column
+    @Column(nullable = false)
     private Long userId;
 
-    @Column
+    @Column(nullable = false)
     private String text;
 
     @Column
@@ -41,8 +42,9 @@ public class Comment {
     @Column
     private LocalDateTime createDate = LocalDateTime.now();
 
+    @Builder.Default
     @Column
-    private boolean isDeleted;
+    private boolean isDeleted = false;
 
     public void setText(String text) {
         this.text = text;
