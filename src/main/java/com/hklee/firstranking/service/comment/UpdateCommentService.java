@@ -16,7 +16,7 @@ public class UpdateCommentService {
         Comment comment = commentRepository.findById(id).orElseThrow();
 
         // 요청자(로그인 아이디)가 코멘트 작성자가 맞는지 확인
-        if (comment.getUserId().equals(loginId)) {
+        if (comment.isOwner(loginId)) {
             comment.setText(dto.getText());
             commentRepository.save(comment);
             return CommentDto.of(comment);
@@ -29,7 +29,7 @@ public class UpdateCommentService {
         Comment comment = commentRepository.findById(id).orElseThrow();
 
         // 요청자(로그인 아이디)가 코멘트 작성자가 맞는지 확인
-        if (comment.getUserId().equals(loginId)) {
+        if (comment.isOwner(loginId)) {
             comment.setIsDeleted(true);
             commentRepository.save(comment);
             return CommentDto.of(comment);

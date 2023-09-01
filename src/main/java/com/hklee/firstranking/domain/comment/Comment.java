@@ -48,4 +48,9 @@ public class Comment {
     public void setIsDeleted(boolean isDeleted) {
         this.isDeleted = isDeleted;
     }
+
+    public boolean isOwner(Long loginId) {
+        return userId.equals(loginId);
+    }
+
 }
