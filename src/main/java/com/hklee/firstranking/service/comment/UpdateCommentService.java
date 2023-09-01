@@ -20,7 +20,6 @@ public class UpdateCommentService {
         // 요청자(로그인 아이디)가 코멘트 작성자가 맞는지 확인
         if (comment.isOwner(loginId)) {
             comment.changeText(dto.getText());
-//            commentRepository.save(comment);
             return CommentDto.of(comment);
         } else {
             throw new Exception("코멘트 작성자 본인만 수정 가능 합니다.");
@@ -32,8 +31,7 @@ public class UpdateCommentService {
 
         // 요청자(로그인 아이디)가 코멘트 작성자가 맞는지 확인
         if (comment.isOwner(loginId)) {
-            comment.setIsDeleted(true);
-//            commentRepository.save(comment);
+            comment.delete();
             return CommentDto.of(comment);
         } else {
             throw new Exception("코멘트 작성자 본인만 삭제 가능 합니다.");
