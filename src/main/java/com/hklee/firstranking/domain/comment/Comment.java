@@ -42,10 +42,15 @@ public class Comment {
     @Column
     private boolean isDeleted = false;
 
-    public void setText(String text) {
+    public void changeText(String text) {
         this.text = text;
     }
-    public void setIsDeleted(boolean isDeleted) {
-        this.isDeleted = isDeleted;
+
+    public boolean isOwner(Long loginId) {
+        return userId.equals(loginId);
+    }
+
+    public void delete() {
+        isDeleted = true;
     }
 }
