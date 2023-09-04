@@ -15,7 +15,7 @@ public class UpdateCommentService {
     private final Long loginId = 2L; // todo :: member 개발 후 수정
 
     public CommentDto update(Long id, UpdateCommentDto dto) throws Exception {
-        Comment comment = commentRepository.findById(id).orElseThrow();
+        Comment comment = commentRepository.findById(id).orElseThrow(() -> new RuntimeException("id에 해당하는 댓글이 없습니다."));
 
         // 요청자(로그인 아이디)가 코멘트 작성자가 맞는지 확인
         if (comment.isOwner(loginId)) {
@@ -27,7 +27,7 @@ public class UpdateCommentService {
     }
 
     public CommentDto delete(Long id) throws Exception{
-        Comment comment = commentRepository.findById(id).orElseThrow();
+        Comment comment = commentRepository.findById(id).orElseThrow(() -> new RuntimeException("id에 해당하는 댓글이 없습니다."));
 
         // 요청자(로그인 아이디)가 코멘트 작성자가 맞는지 확인
         if (comment.isOwner(loginId)) {
