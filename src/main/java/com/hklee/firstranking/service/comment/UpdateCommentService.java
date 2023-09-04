@@ -14,7 +14,7 @@ public class UpdateCommentService {
     private final CommentRepository commentRepository;
     private final Long loginId = 2L; // todo :: member 개발 후 수정
 
-    public CommentDto update(Long id, UpdateCommentDto dto) throws Exception {
+public CommentDto update(Long id, UpdateCommentDto dto) throws RuntimeException {
         Comment comment = commentRepository.findById(id).orElseThrow(() -> new RuntimeException("id에 해당하는 댓글이 없습니다."));
 
         // 요청자(로그인 아이디)가 코멘트 작성자가 맞는지 확인
@@ -22,11 +22,11 @@ public class UpdateCommentService {
             comment.changeText(dto.getText());
             return CommentDto.of(comment);
         } else {
-            throw new Exception("코멘트 작성자 본인만 수정 가능 합니다.");
+            throw new RuntimeException("코멘트 작성자 본인만 수정 가능 합니다.");
         }
     }
 
-    public CommentDto delete(Long id) throws Exception{
+public CommentDto delete(Long id) throws RuntimeException {
         Comment comment = commentRepository.findById(id).orElseThrow(() -> new RuntimeException("id에 해당하는 댓글이 없습니다."));
 
         // 요청자(로그인 아이디)가 코멘트 작성자가 맞는지 확인
@@ -34,7 +34,7 @@ public class UpdateCommentService {
             comment.delete();
             return CommentDto.of(comment);
         } else {
-            throw new Exception("코멘트 작성자 본인만 삭제 가능 합니다.");
+            throw new RuntimeException("코멘트 작성자 본인만 삭제 가능 합니다.");
         }
     }
 

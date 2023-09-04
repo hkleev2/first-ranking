@@ -30,12 +30,12 @@ public class CommentController {
     }
 
     @PatchMapping("/{id}")
-    public CommentDto update(@PathVariable Long id, @RequestBody UpdateCommentRequest request) throws Exception {
+    public CommentDto update(@PathVariable Long id, @RequestBody UpdateCommentRequest request) throws RuntimeException {
         return updateCommentService.update(id, request.toServiceDto());
     }
 
     @DeleteMapping("/{id}")
-    public CommentDto delete(@PathVariable Long id) throws Exception {
+    public CommentDto delete(@PathVariable Long id) throws RuntimeException {
         return updateCommentService.delete(id);
     }
 
